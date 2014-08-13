@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite" >
+
+	<composite:interface>
+	
+		<composite:attribute 
+					name="value" 
+					required="true" 
+					type="java.util.Set" />
+				
+		<composite:attribute name="backingBean"
+					type="com.mycompany.helloweb.SmpdBean" 
+					required="true" />
+
+	</composite:interface>
+
+	<composite:implementation>
+		<ui:repeat var="smpdVar" value="#{cc.attrs.value.toArray()}">
+			<h:panelGrid id="smpdDisplay" columns="1" width="100%" columnClasses="formColumnClass8">
+
+				<p:commandLink id="smpdLink" value="#{smpdVar.regNo}" update=":mainForm:smpd:smpdDialog"
+								oncomplete="smpdDlg.show();"
+								actionListener="#{cc.attrs.backingBean.populateSMPD(smpdVar)}"
+								rendered="#{smpdVar.regNo != null}"
+								styleClass="ui-link-image-review">
+					<f:param name="regNo" value="#{smpdVar.regNo}" />
+					<f:param name="episod" value="#{smpdVar.episod}" />
+				</p:commandLink>
+
+			</h:panelGrid>
+
+		</ui:repeat>
+
+		<p:dialog id="smpdDialog" header="SMPD" widgetVar="smpdDlg"
+					modal="true" appendToBody="false" resizable="true" closable="true"
+					styleClass="smpdDialog">
+
+			<h:panelGrid id="smpdDisplayDialog" columns="2" cellpadding="4"
+							width="100%" columnClasses="formColumnClass3, formColumnClass4">
+
+				<p:outputLabel for="smpdName" value="#{msg['smpd.name']}:" />
+				<p:outputLabel id="smpdName" value="#{cc.attrs.backingBean.smpdModel.name}" />
+
+				<p:outputLabel for="smpdRegNo" value="#{msg['smpd.reg.no']}:" />
+				<p:outputLabel id="smpdRegNo" value="#{cc.attrs.backingBean.smpdModel.regNo}" />
+
+			</h:panelGrid>
+
+		</p:dialog>
+
+	</composite:implementation>
+
+</ui:composition>
