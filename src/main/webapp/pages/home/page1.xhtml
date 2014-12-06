@@ -1,0 +1,39 @@
+<ui:composition template="/WEB-INF/templates/main-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/output/Param" />
+			<f:attribute name="vdl.paths" value="o/param" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ParamBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java,classes/org/omnifaces/showcase/components/ExampleEntityConverter.java,classes/org/omnifaces/showcase/i18n/text.properties" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="demo">
+				
+		<h:panelGrid columns="3">
+		    <ui:decorate template="/WEB-INF/templates/field.xhtml">
+		        <ui:param name="label" value="Foo" />
+		        <ui:param name="id" value="foo" />
+		        <ui:define name="input">
+		            <h:inputText id="foo" value="#{bean.foo}" required="true" />
+		        </ui:define>
+		    </ui:decorate>
+		    <ui:decorate template="/WEB-INF/templates/field.xhtml">
+		        <ui:param name="label" value="Bar" />
+		        <ui:param name="id" value="bar" />
+		        <ui:define name="input">
+		            <h:selectBooleanCheckbox id="bar" value="#{bean.bar}" required="true" />
+		        </ui:define>
+		    </ui:decorate>
+		</h:panelGrid>
+		
+	</ui:define>
+</ui:composition>
+	
+	
+	
