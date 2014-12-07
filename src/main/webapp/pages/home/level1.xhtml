@@ -1,0 +1,28 @@
+<ui:composition template="/WEB-INF/templates/main-level-template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="filter">
+		<div>
+			<h:inputText></h:inputText>
+			<h:commandButton value="Search" action="#{page.getLevel('1').search(null)}"></h:commandButton>
+		</div>
+	</ui:define>
+	
+	<ui:define name="resultTable">
+		<div>Table1</div>
+	</ui:define>
+	
+	<ui:define name="buttons">
+		<div>
+			<h:commandButton value="Add" action="#{page.getLevel('1').add(null)}"></h:commandButton>
+		</div>
+	</ui:define>
+	
+</ui:composition>
+	
+	
+	

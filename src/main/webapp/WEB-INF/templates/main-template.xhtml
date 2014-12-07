@@ -18,10 +18,14 @@
 	
 	<ui:define name="content">
 	
+		#{page}
+	
 		<ui:insert name="description">
 			<h:outputText value="#{page.current.description}" escape="false" />
 		</ui:insert>
 		<ui:insert name="description-extra" />
+		
+		<ui:insert name="level" />
 		
 		<!--  
 		<ui:fragment rendered="#{not empty page.current.sources}">

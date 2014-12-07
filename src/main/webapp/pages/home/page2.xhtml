@@ -10,15 +10,29 @@
 			<f:attribute name="api.path" value="component/output/Param" />
 			<f:attribute name="vdl.paths" value="o/param" />
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ParamBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java,classes/org/omnifaces/showcase/components/ExampleEntityConverter.java,classes/org/omnifaces/showcase/i18n/text.properties" />
-			<f:attribute name="level1" value="#{level1Bean}" />
-			<f:attribute name="level2" value="#{level2Bean}" />
+			<f:attribute name="level1" value="level1Bean" />
+			<f:attribute name="level2" value="level2Bean" />
 		</f:metadata>
 	</ui:define>
 	
 	<ui:define name="level">
 				
-		<ui:include src="level1.xhtml"></ui:include>
-		<ui:include src="level2.xhtml"></ui:include>
+		<h:panelGrid columns="3">
+		    <ui:decorate template="/WEB-INF/templates/field.xhtml">
+		        <ui:param name="label" value="Foo" />
+		        <ui:param name="id" value="foo" />
+		        <ui:define name="input">
+		            <h:inputText id="foo" value="#{bean.foo}" required="true" />
+		        </ui:define>
+		    </ui:decorate>
+		    <ui:decorate template="/WEB-INF/templates/field.xhtml">
+		        <ui:param name="label" value="Bar" />
+		        <ui:param name="id" value="bar" />
+		        <ui:define name="input">
+		            <h:selectBooleanCheckbox id="bar" value="#{bean.bar}" required="true" />
+		        </ui:define>
+		    </ui:decorate>
+		</h:panelGrid>
 		
 	</ui:define>
 </ui:composition>

@@ -18,6 +18,7 @@
         <jsf.artifact>jsf</jsf.artifact>
         <jsf.version>2.2.6</jsf.version>
         <primefaces.version>4.0</primefaces.version>
+        <javase.version>1.7</javase.version>
         <javaee.version>7.0</javaee.version>
         <arquillian.version>1.1.2.Final</arquillian.version>
         <drone.version>1.2.2.Final</drone.version>
@@ -241,10 +242,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${javase.version}</source>
+                    <target>${javase.version}</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
